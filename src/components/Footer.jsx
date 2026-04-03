@@ -9,15 +9,15 @@ const Footer = ({ isRtl }) => {
     <footer id="contact" style={{ background: '#001326', color: 'rgba(255,255,255,0.7)', padding: '5rem 0 2rem' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '4rem', marginBottom: '4rem' }}>
-          
+
           {/* Brand Info */}
           <div>
             <h3 style={{ color: 'var(--white)', fontSize: '1.8rem', fontFamily: 'var(--font-heading)', marginBottom: '1.5rem' }}>
               {isRtl ? 'أبشار الكويت' : 'Abshar Kuwait'}
             </h3>
             <p style={{ lineHeight: '1.8', marginBottom: '2rem' }}>
-              {isRtl 
-                ? 'مطعم ومقهى أبشار الكويت هو وجهتكم المفضلة للمأكولات الإيرانية الأصيلة في قلب الكويت. نحن نفخر بجودة مكوناتنا وطعمنا الذي لا يقاوم.' 
+              {isRtl
+                ? 'مطعم ومقهى أبشار الكويت هو وجهتكم المفضلة للمأكولات الإيرانية الأصيلة في قلب الكويت. نحن نفخر بجودة مكوناتنا وطعمنا الذي لا يقاوم.'
                 : 'Abshar Kuwait Restaurant & Cafe is your premier destination for authentic Iranian cuisine in the heart of Kuwait. We take pride in the quality of our ingredients and our irresistible flavors.'}
             </p>
             <div style={{ display: 'flex', gap: '1rem' }}>
@@ -29,7 +29,7 @@ const Footer = ({ isRtl }) => {
           {/* Quick Links */}
           <div style={{ textAlign: isRtl ? 'right' : 'left' }}>
             <h4 style={{ color: 'var(--white)', fontSize: '1.2rem', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
-               {isRtl ? 'روابط سريعة' : 'Quick Links'}
+              {isRtl ? 'روابط سريعة' : 'Quick Links'}
             </h4>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <li><a href="#menu">{isRtl ? 'القائمة' : 'Our Menu'}</a></li>
@@ -42,7 +42,7 @@ const Footer = ({ isRtl }) => {
           {/* Contact Info */}
           <div style={{ textAlign: isRtl ? 'right' : 'left' }}>
             <h4 style={{ color: 'var(--white)', fontSize: '1.2rem', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
-               {isRtl ? 'اتصل بنا' : 'Contact Us'}
+              {isRtl ? 'اتصل بنا' : 'Contact Us'}
             </h4>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <li style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -63,10 +63,10 @@ const Footer = ({ isRtl }) => {
 
         {/* Bottom Bar */}
         <div style={{ pt: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)', textAlign: 'center', fontSize: '0.9rem' }}>
-           <p>© {currentYear} {isRtl ? 'أبشار الكويت. جميع الحقوق محفوظة.' : 'Abshar Kuwait. All Rights Reserved.'}</p>
-           <p style={{ marginTop: '0.5rem', color: 'rgba(255,255,255,0.4)' }}>
-              Powered by <a href="https://mnasati.com" style={{ color: 'var(--secondary)' }}>MNASATI</a>
-           </p>
+          <p>© {currentYear} {isRtl ? 'أبشار الكويت. جميع الحقوق محفوظة.' : 'Abshar Kuwait. All Rights Reserved.'}</p>
+          <p style={{ marginTop: '0.5rem', color: 'rgba(255,255,255,0.4)' }}>
+            Powered by <span style={{ color: 'var(--secondary)', fontWeight: 600 }}>Genie9.dev</span>
+          </p>
         </div>
       </div>
     </footer>

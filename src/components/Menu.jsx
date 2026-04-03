@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Menu = ({ isRtl }) => {
+const Menu = ({ isRtl, addToCart }) => {
   const [activeTab, setActiveTab] = useState('signature');
 
   const tabs = [
@@ -150,7 +150,7 @@ const Menu = ({ isRtl }) => {
                       {item.description}
                     </p>
                     <button 
-                      onClick={() => window.open('https://absharq8.com/', '_blank')}
+                      onClick={() => addToCart(item)}
                       style={{
                         width: '100%',
                         padding: '0.8rem',
@@ -170,7 +170,7 @@ const Menu = ({ isRtl }) => {
                         e.target.style.background = 'transparent';
                       }}
                     >
-                      {isRtl ? 'اطلب الآن' : 'Order Now'}
+                      {isRtl ? 'إضافة للسلة' : 'Add to Cart'}
                     </button>
                   </div>
                 </div>

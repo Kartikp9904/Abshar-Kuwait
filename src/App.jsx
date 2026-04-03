@@ -6,9 +6,12 @@ import Quality from './components/Quality';
 import Menu from './components/Menu';
 import Branches from './components/Branches';
 import Footer from './components/Footer';
+import Cart from './components/Cart';
 
 const App = () => {
   const [isRtl, setIsRtl] = useState(true);
+  const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     document.dir = isRtl ? 'rtl' : 'ltr';
@@ -17,10 +20,47 @@ const App = () => {
 
   const toggleLanguage = () => setIsRtl(!isRtl);
 
+  const addToCart = (item) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((i) => i.name === item.name);
+      if (existingItem) {
+        return prevCart.map((i) =>
+          i.name === item.name ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      }
+      return [...prevCart, { ...item, quantity: 1 }];
+    });
+    setIsCartOpen(true);
+  };
+
+  const removeFromCart = (name) => {
+    setCart((prevCart) => prevCart.filter((item) => item.name !== name));
+  };
+
+  const updateQuantity = (name, delta) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => {
+        if (item.name === name) {
+          const newQuantity = Math.max(1, item.quantity + delta);
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      })
+    );
+  };
+
   return (
     <div className={`app-container ${isRtl ? 'rtl' : 'ltr'}`}>
-      <Navbar isRtl={isRtl} toggleLanguage={toggleLanguage} />
-      <Hero isRtl={isRtl} />
+      <Navbar 
+        isRtl={isRtl} 
+        toggleLanguage={toggleLanguage} 
+        cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
+        onCartOpen={() => setIsCartOpen(true)}
+        onCartClose={() => setIsCartOpen(false)}
+      />
+      <Hero isRtl={isRtl} onOrderClick={() => {
+        document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+      }} />
       
       {/* Expanded About Section */}
       <section id="about" className="section-padding" style={{ background: 'var(--white)' }}>
@@ -82,10 +122,19 @@ const App = () => {
         </div>
       </section>
 
-      <Menu isRtl={isRtl} />
+      <Menu isRtl={isRtl} addToCart={addToCart} />
       <Quality isRtl={isRtl} />
       <Branches isRtl={isRtl} />
       <Footer isRtl={isRtl} />
+
+      <Cart
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cart={cart}
+        removeFromCart={removeFromCart}
+        updateQuantity={updateQuantity}
+        isRtl={isRtl}
+      />
     </div>
   );
 };
